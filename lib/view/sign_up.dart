@@ -30,74 +30,77 @@ class _SignupState extends State<Signup> {
         child: Center(
           child: Form(
             key: formkey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextFormField(
-                controller: firstcontroller,
-                decoration:const InputDecoration(
-                  border:  OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-                  labelText: 'First Name'
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextFormField(
+                  controller: firstcontroller,
+                  decoration:const InputDecoration(
+                    border:  OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                    labelText: 'First Name'
+                  ),
+                  validator: (value){
+                    if(value==null||value.isEmpty) {
+                      return 'Enter your first name';
+                    }
+                  },
                 ),
-                validator: (value){
-                  if(value==null||value.isEmpty) {
-                    return 'Enter your first name';
-                  }
-                },
-              ),
-              const SizedBox(height: 20.0,),
-              TextFormField(
-                controller: lastcontroller,
-                decoration:const InputDecoration(
-                  border:  OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-                  labelText: 'Last Name'
+                const SizedBox(height: 20.0,),
+                TextFormField(
+                  controller: lastcontroller,
+                  decoration:const InputDecoration(
+                    border:  OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                    labelText: 'Last Name'
+                  ),
+                  validator: (value){
+                    if(value==null||value.isEmpty) {
+                      return 'Enter your last name';
+                    }
+                  },
                 ),
-                validator: (value){
-                  if(value==null||value.isEmpty) {
-                    return 'Enter your last name';
-                  }
-                },
-              ),
-              const SizedBox(height: 20.0,),
-              TextFormField(
-                controller: emailcontroller,
-                decoration:const InputDecoration(
-                  border:  OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-                  labelText: 'email'
+                const SizedBox(height: 20.0,),
+                TextFormField(
+                  controller: emailcontroller,
+                  decoration:const InputDecoration(
+                    border:  OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                    labelText: 'email'
+                  ),
+                  validator: (value){
+                    if(value==null||value.isEmpty) {
+                      return 'Enter your email';
+                    }
+                  },
                 ),
-                validator: (value){
-                  if(value==null||value.isEmpty) {
-                    return 'Enter your email';
-                  }
-                },
-              ),
-              const SizedBox(height: 20.0,),
-              TextFormField(
-                controller: passwordcontroller,
-                decoration:const InputDecoration(
-                  border:  OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-                  labelText: 'password'
+                const SizedBox(height: 20.0,),
+                TextFormField(
+                  controller: passwordcontroller,
+                  decoration:const InputDecoration(
+                    border:  OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                    labelText: 'password'
+                  ),
+                  validator: (value){
+                    if(value==null||value.isEmpty) {
+                      return 'Enter your password';
+                    }
+                  },
                 ),
-                validator: (value){
-                  if(value==null||value.isEmpty) {
-                    return 'Enter your password';
+                ElevatedButton(onPressed: ()async{
+                  if(formkey.currentState!.validate()){
+                    
+                   /* var data=await DioHelper.postData(endpoint: SIGNUP,body: {
+                      "firstName": firstcontroller.text.toString(),
+                      "lastName": lastcontroller.text.toString(),
+                      "email": emailcontroller.text.toString(),
+                      "password": passwordcontroller.text.toString()
+                    });
+                    print(data);*/
                   }
-                },
-              ),
-              ElevatedButton(onPressed: ()async{
-                if(formkey.currentState!.validate()){
-                  
-                 /* var data=await DioHelper.postData(endpoint: SIGNUP,body: {
-                    "firstName": firstcontroller.text.toString(),
-                    "lastName": lastcontroller.text.toString(),
-                    "email": emailcontroller.text.toString(),
-                    "password": passwordcontroller.text.toString()
-                  });
-                  print(data);*/
-                }
-              }, child: Text("Sign in"))
-            ],
-          )),
+                }, child: Text("Sign in"))
+              ],
+          ),
+            )),
         )
         ),
     );

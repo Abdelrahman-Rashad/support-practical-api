@@ -32,48 +32,50 @@ class _SignInState extends State<SignIn> {
         child: Center(
           child: Form(
             key: formkey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              
-              TextFormField(
-                controller: emailcontroller,
-                decoration:const InputDecoration(
-                  border:  OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-                  labelText: 'email'
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                
+                TextFormField(
+                  controller: emailcontroller,
+                  decoration:const InputDecoration(
+                    border:  OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                    labelText: 'email'
+                  ),
+                  validator: (value){
+                    if(value==null||value.isEmpty) {
+                      return 'Enter your email';
+                    }
+                  },
                 ),
-                validator: (value){
-                  if(value==null||value.isEmpty) {
-                    return 'Enter your email';
-                  }
-                },
-              ),
-              const SizedBox(height: 20.0,),
-              TextFormField(
-                controller: passwordcontroller,
-                decoration:const InputDecoration(
-                  border:  OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-                  labelText: 'password'
+                const SizedBox(height: 20.0,),
+                TextFormField(
+                  controller: passwordcontroller,
+                  decoration:const InputDecoration(
+                    border:  OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                    labelText: 'password'
+                  ),
+                  validator: (value){
+                    if(value==null||value.isEmpty) {
+                      return 'Enter your password';
+                    }
+                  },
                 ),
-                validator: (value){
-                  if(value==null||value.isEmpty) {
-                    return 'Enter your password';
+                ElevatedButton(onPressed: ()async{
+                  if(formkey.currentState!.validate()){
+
+                   // WRITE YOUR CODE HERE
+                   
+
+
+                   
                   }
-                },
-              ),
-              ElevatedButton(onPressed: ()async{
-                if(formkey.currentState!.validate()){
-
-                 // WRITE YOUR CODE HERE
-
-
-
-
-                 
-                }
-              }, child: Text("Sign in"))
-            ],
-          )),
+                }, child: Text("Sign in"))
+              ],
+          ),
+            )),
         )
         ),
     );
